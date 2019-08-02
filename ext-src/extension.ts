@@ -69,8 +69,10 @@ class ReactPanel {
 			}
 		}, null, this._disposables);
 		Git
-			.run(Git.NUM_LOG)
-			.then(result => this._panel.webview.postMessage(result))
+			.getStats()
+			.then(result => {
+				this._panel.webview.postMessage(JSON.stringify(result));
+			});
 	}
 
 	public dispose() {

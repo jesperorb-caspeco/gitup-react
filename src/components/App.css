@@ -4,5 +4,21 @@ body {
 }
 
 .app{
-  padding: 4rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.pie-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.pie-container__pie {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
