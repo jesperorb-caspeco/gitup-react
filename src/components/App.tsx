@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Cell, Pie, PieChart } from "recharts";
 import { Format } from "../services/formatService";
 import "./App.css";
 
@@ -29,12 +30,22 @@ class App extends React.Component<{}, IAppState> {
   public render() {
     const { totalAdditions, totalDeletions } = this.state;
     return (
-      <div>
-        <h2>Stats for last week</h2>
-        <h3>Additions</h3>
-        <p>{totalAdditions}</p>
-        <h3>Deletions</h3>
-        <p>{totalDeletions}</p>
+      <div className="app">
+        <h2>Stats for the last seven days</h2>
+        <PieChart width={200} height={300}>
+          <Pie
+            data={[
+              { name: "additions", amt: totalAdditions },
+              { name: "deletions", amt: totalDeletions }
+            ]}
+            dataKey="amt"
+            label={true}
+            outerRadius={80} 
+          >
+            <Cell fill={"#ff8042"}/>
+            <Cell fill={"#00c49f"}/>
+          </Pie>
+        </PieChart>
       </div>
     );
   }

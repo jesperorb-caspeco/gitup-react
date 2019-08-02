@@ -15,6 +15,7 @@ export interface IGitAPI {
 export class Git {
   public static PRETTY_LOG = `log --since="1 day" dev --pretty="format:{ \\"author\\": \\"%an\\", \\"date\\": \\"%ad\\", \\"body\\": \\"%f\\" },"`;
   public static NUM_LOG = `log --numstat --since="7 days" --pretty="format:SEPARATOR" dev`;
+  public static CURRENT_USER = `config user.name`;
 
   public static async run(gitCommand: string): Promise<string> {
     const workspacePath = workspace.rootPath || "";
