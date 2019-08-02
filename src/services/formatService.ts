@@ -3,7 +3,7 @@ export class Format {
     return "[" + rawData.slice(0, -1) + "]";
   }
 
-  public static logResult(rawData: string) {
+  public static parse(rawData: string) {
     try {
       return JSON.parse(this.wrapJSON(rawData));
     } catch (error) {
@@ -11,7 +11,7 @@ export class Format {
     }
   }
 
-  public static statResult(rawData: string) {
+  public static stats(rawData: string) {
     const files = rawData
       .split(/SEPARATOR\n/g)
       .filter(Boolean)
@@ -19,7 +19,7 @@ export class Format {
         .split(/\n/g)
         .filter(Boolean)
       )
-      .reduce((acc: string[], item: string[]) => acc.concat(item));
+      .reduce((acc: string[], item: string[]) => acc.concat(item), []);
     let totalAdditions = 0;
     let totalDeletions = 0;
     for (const file in files) {
@@ -34,19 +34,5 @@ export class Format {
       }
     }
     return { totalAdditions, totalDeletions };
-  }
-
-  public static gitLog(formattedData: any[]) {
-    return formattedData.reduce(
-      (acc: string, item: any) =>
-        (acc += `
-                <div>
-                    <h2 style="color: lightsalmon">${item.author}</h2>
-                    <p><em>${item.date}</em></p>
-                    <p><strong>${item.body}</strong></p>
-                </div>`
-        ),
-      ""
-    );
   }
 }
