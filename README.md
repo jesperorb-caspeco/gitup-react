@@ -2,6 +2,8 @@
 
 Gitup shows some recent stats about your `git`-activity such as _commits_, `diffs` and various stats that helps to remind you of what you have acomplished during the day or week. The name is a combination of _git_ and _standup_.
 
+![Show branch additions and deletions](https://i.imgur.com/PWQTWfp.png)
+
 ## Features
 
 ## Requirements
